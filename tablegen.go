@@ -11,12 +11,9 @@ type RawTable [][]string
 
 // Gets maximum width of each column in table for spacing purposes
 func getColWidths(table RawTable) (colWidths []string) {
-	//fmt.Println(len(table[0]), table[0])
 	for j := range table[0] {
-		fmt.Println(j)
 		colWidth := 0
 		for i := range table {
-			fmt.Println(i)
 			if len(table[i][j]) > colWidth {
 				colWidth = len(table[i][j])
 			}
@@ -40,9 +37,9 @@ func padCell(cell string, width int) string {
 // Pads all cells in table so each column has uniform width
 func padTable(table RawTable) (spacedTable RawTable) {
 	colWidths := getColWidths(table)
-	for i := range table {
-		for j := range table[0] {
-			reqWidth, err := strconv.Atoi(colWidths[i])
+	for j := range table[0] {
+		for i := range table {
+			reqWidth, err := strconv.Atoi(colWidths[j])
 			if err != nil {
 				log.Println(err)
 			}
