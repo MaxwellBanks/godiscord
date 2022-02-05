@@ -6,6 +6,8 @@ import (
 	"github.com/bwmarrin/discordgo"
 )
 
+type BotFunc func([]string) string
+
 //Verifies that message is meant for this bot
 func IsCommand(message string, flag string) bool {
 	return strings.HasPrefix(message, flag)
@@ -25,7 +27,7 @@ func IsOwnMessage(
 func CommandToFunc(
 	command string,
 	arguments []string,
-	cmdMap map[string]func([]string) string,
+	cmdMap map[string]BotFunc,
 ) string {
 	return cmdMap[command](arguments)
 }
