@@ -28,9 +28,10 @@ func padCell(cell string, width int) string {
 	if len(cell) == width {
 		return cell
 	}
-	return (strings.Repeat(" ", width/2) +
+	padWidth := width - len(cell)
+	return (strings.Repeat(" ", padWidth/2) +
 		cell +
-		strings.Repeat(" ", (width/2)+(width%2)))
+		strings.Repeat(" ", (padWidth/2)+(padWidth%2)))
 }
 
 // Pads all cells in table so each column has uniform width
@@ -77,7 +78,7 @@ func GenTable(data RawTable) string {
 
 	// Writing body
 	for i := range paddedTable {
-		builder.WriteString(genRow(paddedTable[i+1]))
+		builder.WriteString(genRow(paddedTable[i]))
 	}
 	return builder.String()
 }
