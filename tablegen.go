@@ -18,6 +18,7 @@ func getColWidths(table RawTable) (colWidths []string) {
 				colWidth = len(table[i][j])
 			}
 		}
+		fmt.Println(i)
 		colWidths = append(colWidths, strconv.Itoa(colWidth))
 	}
 	return
