@@ -1,12 +1,13 @@
 package godiscordutil
 
 import (
+	"database/sql"
 	"strings"
 
 	"github.com/bwmarrin/discordgo"
 )
 
-type BotFunc func([]string) string
+type BotFunc func(*sql.DB, []string) string
 
 // Verifies that message is meant for this bot
 func IsCommand(message string, flag string) bool {
@@ -39,6 +40,7 @@ func CommandToFunc(
 	command string,
 	arguments []string,
 	cmdMap map[string]BotFunc,
+	db *sql.DB,
 ) string {
-	return cmdMap[command](arguments)
+	return cmdMap[command](db, arguments)
 }
