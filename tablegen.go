@@ -11,11 +11,12 @@ type RawTable [][]string
 
 // Gets maximum width of each column in table for spacing purposes
 func getColWidths(table RawTable) (colWidths []string) {
-	fmt.Println(len(table[0]), table[0])
+	//fmt.Println(len(table[0]), table[0])
 	for j := range table[0] {
+		fmt.Println(j)
 		colWidth := 0
 		for i := range table {
-			fmt.Println(table[i][j])
+			fmt.Println(i)
 			if len(table[i][j]) > colWidth {
 				colWidth = len(table[i][j])
 			}
