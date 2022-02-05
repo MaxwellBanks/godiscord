@@ -11,9 +11,9 @@ type RawTable [][]string
 
 // Gets maximum width of each column in table for spacing purposes
 func getColWidths(table RawTable) (colWidths []string) {
-	for i := range table {
+	for j := range table[0] {
 		colWidth := 0
-		for j := range table[0] {
+		for i := range table {
 			if len(table[i][j]) > colWidth {
 				colWidth = len(table[i][j])
 			}
@@ -77,7 +77,7 @@ func GenTable(data RawTable) string {
 	)
 
 	// Writing body
-	for i := range paddedTable {
+	for i := 1; i < len(paddedTable); i++ {
 		builder.WriteString(genRow(paddedTable[i]))
 	}
 	return builder.String()
