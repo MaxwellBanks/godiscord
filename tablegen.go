@@ -76,8 +76,8 @@ func GenTable(data RawTable) string {
 	)
 
 	// Writing body
-	for i := range paddedTable[1:] {
-		builder.WriteString(genRow(paddedTable[i]))
+	for i := range paddedTable {
+		builder.WriteString(genRow(paddedTable[i+1]))
 	}
 	return builder.String()
 }
