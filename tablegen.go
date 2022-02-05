@@ -55,7 +55,7 @@ func genRow(tableRow []string) string {
 	for i := range tableRow {
 		builder.WriteString(fmt.Sprintf("%s|", tableRow[i]))
 	}
-	builder.WriteString("\n\n")
+	builder.WriteString("\n")
 	return builder.String()
 }
 
@@ -70,8 +70,8 @@ func GenTable(data RawTable) string {
 	// Adding header delineation
 	builder.WriteString(
 		fmt.Sprintf(
-			"%s\n\n",
-			strings.Repeat("-", len(builder.String())-2),
+			"%s\n",
+			strings.Repeat("-", len(builder.String())-1),
 		),
 	)
 
