@@ -14,6 +14,7 @@ func getColWidths(table RawTable) (colWidths []string) {
 	for j := range table[0] {
 		colWidth := 0
 		for i := range table {
+			fmt.Println(table[i][j])
 			if len(table[i][j]) > colWidth {
 				colWidth = len(table[i][j])
 			}
