@@ -11,6 +11,7 @@ type RawTable [][]string
 
 // Gets maximum width of each column in table for spacing purposes
 func getColWidths(table RawTable) (colWidths []string) {
+	fmt.Println(len(table[0]), table[0])
 	for j := range table[0] {
 		colWidth := 0
 		for i := range table {
