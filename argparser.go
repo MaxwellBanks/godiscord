@@ -42,5 +42,9 @@ func CommandToFunc(
 	cmdMap map[string]BotFunc,
 	db *sql.DB,
 ) string {
-	return cmdMap[command](db, arguments)
+	result := ""
+	if _, err := cmdMap[command]; err {
+		result = cmdMap[command](db, arguments)
+	}
+	return result
 }
