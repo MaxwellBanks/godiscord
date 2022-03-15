@@ -7,9 +7,10 @@ import (
 	"strings"
 )
 
+// RawTable contains the data to be inserted into ascii table
 type RawTable [][]string
 
-// Gets maximum width of each column in table for spacing purposes
+// getColWidths gets maximum width of each column in table for spacing purposes
 func getColWidths(table RawTable) (colWidths []string) {
 	for j := range table[0] {
 		colWidth := 0
@@ -23,7 +24,7 @@ func getColWidths(table RawTable) (colWidths []string) {
 	return
 }
 
-// Pads cell with spaces to meet width requirements
+// padCell pads cell with spaces to meet width requirements
 func padCell(cell string, width int) string {
 	if len(cell) == width {
 		return cell
@@ -34,7 +35,7 @@ func padCell(cell string, width int) string {
 		strings.Repeat(" ", (padWidth/2)+(padWidth%2)))
 }
 
-// Pads all cells in table so each column has uniform width
+// padTable pads all cells in table so each column has uniform width
 func padTable(table RawTable) (spacedTable RawTable) {
 	colWidths := getColWidths(table)
 	for j := range table[0] {
@@ -49,7 +50,7 @@ func padTable(table RawTable) (spacedTable RawTable) {
 	return table
 }
 
-// Converts array of strings to table row
+// genRow converts array of strings to table row
 func genRow(tableRow []string) string {
 	var builder strings.Builder
 	builder.WriteString("|")
@@ -60,7 +61,7 @@ func genRow(tableRow []string) string {
 	return builder.String()
 }
 
-// Generates simple ascii table as string
+// GenTable generates simple ascii table as string
 func GenTable(data RawTable) string {
 	paddedTable := padTable(data)
 	var builder strings.Builder
