@@ -2,7 +2,7 @@
 
 Package `MaxwellBanks/godiscordutil` provides a set of utility functions that may be helpful for Discord bots. 
 
-![Unit Testing](https:/github.com/MaxwellBanks/godiscordutil/actions/workflows/push.yml/badge.svg)
+![Unit Testing](https://github.com/MaxwellBanks/godiscordutil/actions/workflows/push.yml/badge.svg)
 
 ## Datatypes
 ### Argparser
